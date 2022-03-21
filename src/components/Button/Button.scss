@@ -1,0 +1,67 @@
+$types: primary, secondary;
+$sizes: small, medium, large;
+
+$classic-blue-color: #0f4c78;
+$classic-white-color: #fff;
+$ultimate-grey-color: #939597;
+$inversed-ultimate-grey-color: #6C6A68;
+
+button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 10px 25px;
+}
+
+@each $type in $types {
+  .btn-#{$type} {
+    @if $type == primary {
+      background: $classic-blue-color;
+      color: $classic-white-color;
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(0.98);
+      }
+    } @else if $type == secondary {
+      background: $classic-white-color;
+      border: 1px solid $classic-blue-color;
+      color: $classic-blue-color;
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    &:disabled {
+      background: $ultimate-grey-color;
+      color: $inversed-ultimate-grey-color;
+      cursor: default;
+      transform: none;
+    }
+  }
+}
+
+@each $size in $sizes {
+  .btn-size-#{$size} {
+    @if $size == small {
+      font-size: 1rem;
+      line-height: 1rem;
+    } @else if $size == medium {
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+    } @else if $size == large {
+      font-size: 1.50rem;
+      line-height: 1.50rem;
+    }
+  }
+}
